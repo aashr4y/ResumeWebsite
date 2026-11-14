@@ -80,6 +80,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-ra
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 30%;
   border: 2px solid var(--charcoal);
   background: var(--graphite);
 }
@@ -255,6 +256,26 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-ra
 .contact-details a:hover { color: var(--gold-light); }
 
 .copyright { margin-top: 22px; font-size: 0.7rem; color: #7d808a; }
+
+/* ---------- ID selectors ---------- */
+#r-name {
+  letter-spacing: 0.02em;
+}
+
+#r-tagline {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* ---------- Inline-block display ---------- */
+.skill-tag {
+  display: inline-block;
+}
+
+.nav-links a {
+  display: inline-block;
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
