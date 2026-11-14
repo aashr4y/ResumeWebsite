@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aashray Doshi — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="resume-container">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="header">
+      <div class="profile-pic-wrapper">
+        <img
+          src="images/photo.png"
+          alt="Aashray Doshi"
+          width="130"
+          height="130"
+          class="profile-pic"
+          onerror="this.onerror=null; this.src='photo.png';"
+        >
+      </div>
+      <div class="header-info">
+        <h1 id="r-name">Aashray Doshi</h1>
+        <p id="r-tagline" class="subtitle"></p>
+
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#ventures">Ventures</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#hobbies">Hobbies</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section id="about" class="section">
+      <h2 class="section-title"><span class="icon">⚡</span> Summary</h2>
+      <p id="r-summary" class="summary-text"></p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="section-title"><span class="icon">💼</span> Experience</h2>
+      <div id="r-experience"></div>
+    </section>
+
+    <!-- VENTURES -->
+    <section id="ventures" class="section">
+      <h2 class="section-title"><span class="icon">🚀</span> Ventures and Projects</h2>
+      <div id="r-ventures"></div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2 class="section-title"><span class="icon">🎓</span> Education &amp; Achievements</h2>
+      <div id="r-education"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title"><span class="icon">🛠️</span> Skills &amp; Competencies</h2>
+      <div id="r-skills" class="skills-grid"></div>
+    </section>
+
+    <!-- EXTRACURRICULARS -->
+    <section id="hobbies" class="section">
+      <h2 class="section-title"><span class="icon">🏆</span> Extracurriculars &amp; Interests</h2>
+      <div id="r-extracurriculars"></div>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="contact" class="footer">
+      <h3>LET'S CONNECT</h3>
+      <div id="r-contact" class="contact-details"></div>
+      <p class="copyright">© 2026 Aashray Doshi. All rights reserved.</p>
+    </footer>
+
+  </main>
+
+  <script src="content.js"></script>
+  <script>
+    if (typeof resume !== 'undefined') {
+      document.getElementById('r-name').textContent = resume.name;
+      document.getElementById('r-tagline').textContent = resume.tagline;
+      document.getElementById('r-summary').textContent = resume.summary;
+
+      // Render Experience
+      document.getElementById('r-experience').innerHTML = resume.experience.map(item => `
+        <div class="card">
+          <div class="card-header">
+            <h3>${item.title}</h3>
+            <span class="meta">${item.org}${item.dates ? ' | ' + item.dates : ''}</span>
+          </div>
+          ${item.points && item.points.length ? `
+            <ul>
+              ${item.points.map(pt => `<li>${pt}</li>`).join('')}
+            </ul>
+          ` : ''}
+        </div>
+      `).join('');
+
+      // Render Ventures
+      document.getElementById('r-ventures').innerHTML = resume.ventures.map(v => `
+        <div class="card">
+          <div class="card-header">
+            <h3>${v.title}</h3>
+            <span class="meta">${v.meta || ''}</span>
+          </div>
+          <p class="card-text">${v.text}</p>
+        </div>
+      `).join('');
+
+      // Render Education (Title left, Org/Details right)
+      document.getElementById('r-education').innerHTML = resume.education.map(ed => `
+        <div class="card">
+          <div class="card-header">
+            <h3>${ed.title}</h3>
+            <span class="meta">${ed.org}${ed.details && typeof ed.details === 'string' ? ' | ' + ed.details : ''}</span>
+          </div>
+          ${Array.isArray(ed.details) && ed.details.length ? `
+            <ul>
+              ${ed.details.map(d => `<li>${d}</li>`).join('')}
+            </ul>
+          ` : ''}
+        </div>
+      `).join('');
+
+      // Render Skills
+      document.getElementById('r-skills').innerHTML = resume.skills.map(s => `
+        <span class="skill-tag">${s}</span>
+      `).join('');
+
+      // Render Extracurriculars
+      document.getElementById('r-extracurriculars').innerHTML = resume.extracurriculars.map(ex => `
+        <div class="card">
+          <div class="card-header">
+            <h3>${ex.title}</h3>
+            <span class="meta">${ex.meta || ''}</span>
+          </div>
+          ${ex.text ? `<p class="card-text">${ex.text}</p>` : ''}
+        </div>
+      `).join('');
+
+      // Render Contact
+      document.getElementById('r-contact').innerHTML = `
+        <p>Email: <a href="mailto:${resume.contact.emails[0]}">${resume.contact.emails[0]}</a></p>
+        ${resume.contact.emails[1] ? `<p>Institutional: <a href="mailto:${resume.contact.emails[1]}">${resume.contact.emails[1]}</a></p>` : ''}
+        <p>Phone: <a href="tel:${resume.contact.phone}">${resume.contact.phoneDisplay}</a></p>
+        <p>Instagram: <a href="https://instagram.com/${resume.contact.instagram}" target="_blank" rel="noopener noreferrer">@${resume.contact.instagram}</a></p>
+      `;
+    }
+  </script>
+</body>
+</html>
