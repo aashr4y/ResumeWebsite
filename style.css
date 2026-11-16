@@ -151,7 +151,19 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-ra
   border-bottom: 1px solid var(--line);
 }
 
-.section-title .icon { font-size: 1rem; }
+.section-title .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.section-title .icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
 
 .summary-text {
   font-size: 0.92rem;
