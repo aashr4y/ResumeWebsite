@@ -27,7 +27,12 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 body {
   font-family: var(--font-body);
@@ -40,6 +45,9 @@ body {
   background-color: var(--black);
   min-height: 100vh;
   padding: 40px 20px;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -80,7 +88,6 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-ra
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center 30%;
   border: 2px solid var(--charcoal);
   background: var(--graphite);
 }
@@ -214,6 +221,19 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-ra
 }
 
 /* ---------- Skills ---------- */
+.skill-group { margin-bottom: 22px; }
+.skill-group:last-child { margin-bottom: 0; }
+
+.skill-group h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
 .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .skill-tag {
@@ -247,35 +267,26 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-ra
 }
 
 .contact-details p {
-  margin-bottom: 4px;
-  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
   color: var(--grey);
+}
+
+.c-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--gold);
 }
 
 .contact-details a { color: var(--white); font-weight: 500; }
 .contact-details a:hover { color: var(--gold-light); }
 
 .copyright { margin-top: 22px; font-size: 0.7rem; color: #7d808a; }
-
-/* ---------- ID selectors ---------- */
-#r-name {
-  letter-spacing: 0.02em;
-}
-
-#r-tagline {
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-}
-
-/* ---------- Inline-block display ---------- */
-.skill-tag {
-  display: inline-block;
-}
-
-.nav-links a {
-  display: inline-block;
-}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
