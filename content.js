@@ -35,7 +35,7 @@ const resume = {
     {
       title: "Influencer Manager",
       org: "@babyfittttt",
-      dates: "Present",
+      dates: "Oct 2026 - Present",
       points: [
         "Manages all social media for the account, including content strategy and growth.",
         "Identifies, negotiates and closes brand partnership deals on the creator's behalf.",
@@ -45,7 +45,7 @@ const resume = {
     {
       title: "Digital Marketing Intern",
       org: "Yatri Seva",
-      dates: "Present",
+      dates: "Nov 2026 - Present",
       points: [
         "Manages the firm's entire digital marketing function."
       ]
@@ -71,7 +71,7 @@ const resume = {
     {
       title: "Authentic Southeast Asian Cafe Concept",
       org: "In Development",
-      dates: "Present",
+      dates: "Sept 2026 - Present",
       points: [
         "Developing a new cafe concept to fill a clear gap in the market.",
         "Curating a premium, customized dining experience that blends traditional flavors with local tastes."
